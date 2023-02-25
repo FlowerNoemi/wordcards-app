@@ -5,13 +5,15 @@ import WordCard from "../components/card/Card";
 import List from "@mui/material/List";
 import MyList from "../components/list/MyList";
 import "./home.css";
+import { MyButton } from "../components/button/Mybutton";
 
 const Home = () => {
   const [allCards, setAllCards] = useState([""]);
   const [cards, setCards] = useState([""]);
-  const [patternid, setPatternId] = useState([""]);
   const [count, setCount] = useState(1);
-  const [checked, setChecked] = React.useState([1]);
+  const [checked, setChecked] = useState([1]);
+  const [cardId, setCardId] = useState("");
+  const [flip, setFlip] = useState(false);
 
   const getallCard = async (id) => {
     try {
@@ -36,12 +38,14 @@ const Home = () => {
     getallCardsName();
   }, []);
 
-  const found = allCards.find((element) => {
-    return element.rownumb == count;
+  const found = cards.find((element) => {
+    const filterCardId = parseInt(element.lesson_id);
+    return filterCardId === count;
   });
 
-  const patternRow = allCards.filter((element) => {
-    return count == element.rownumb;
+  const cardFilter = cards.filter((element) => {
+    const filterCardId = parseInt(element.lesson_id);
+    return count === filterCardId;
   });
 
   const handleToggle = (id) => () => {
@@ -52,28 +56,61 @@ const Home = () => {
       newChecked.push(id);
       console.log(id);
       getallCard(id);
+      setCardId(id);
+      setCount(1);
     } else {
       newChecked.splice(currentIndex, 1);
+      setCardId("");
+      setCount(1);
     }
     setChecked(newChecked);
+  };
+
+  const counter = () => {
+    setCount(count + 1);
+    setFlip(false);
+  };
+
+  const flipFunction = () => {
+    setFlip(!flip);
   };
 
   return (
     <div>
       <h1>Szókártya</h1>
-      <div>
-        {cards.map((card, id) => {
-          return <WordCard key={id} card={card} />;
-        })}
-      </div>
+
+      {cardId !== "" && (
+        <div>
+          {found && count <= cards.length ? (
+            <div>
+              {cardFilter.map((card, id) => {
+                return (
+                  <WordCard
+                    key={id}
+                    card={card}
+                    counter={() => counter()}
+                    flipFunction={() => flipFunction()}
+                    flip={flip}
+                  />
+                );
+              })}
+            </div>
+          ) : (
+            <div>
+              <h2>Nincs több!</h2>
+              <MyButton onClick={() => setCount(1)} value="Újra"></MyButton>
+            </div>
+          )}
+        </div>
+      )}
       <List
         dense
         sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
       >
-        {allCards.map((allcard) => {
+        {allCards.map((allcard, id) => {
           return (
             <MyList
-              key={allcard.id}
+              key={id}
               allcard={allcard}
               onChange={handleToggle(allcard.id)}
               checked={checked.indexOf(allcard.id) !== -1}

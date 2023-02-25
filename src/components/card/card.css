@@ -21,8 +21,8 @@
   cursor: pointer;
   transform: perspective(1000px) rotateY(var(--rotate-y, 0))
     translateY(var(--translate-y, 0));
-  height: 250px;
-  width: 200px;
+  height: 400px;
+  min-width: 400px;
   margin: 10px;
 }
 
@@ -35,7 +35,7 @@
   --rotate-y: 180deg;
 }
 
-.card .front {
+.card.front {
   left: 0;
 }
 
@@ -48,4 +48,9 @@
 
 .card .back {
   transform: rotateY(180deg);
+}
+
+.card-id {
+  font-size: 36px;
+  text-align: center;
 }

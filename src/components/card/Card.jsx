@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { MyButton } from "../button/Mybutton";
+import RotateLeftIcon from "@mui/icons-material/RotateLeft";
+import RotateRightIcon from "@mui/icons-material/RotateRight";
+import Tooltip from "@mui/material/Tooltip";
+import TaskIcon from "@mui/icons-material/Task";
+
 import "./card.css";
 
-const WordCard = ({ card }) => {
+const WordCard = ({ card, flipFunction, counter, flip }) => {
   const { id, en, hu, lesson_id } = card;
-  const [flip, setFlip] = useState(false);
 
   const englishspeak = (en) => {
     let msg = new SpeechSynthesisUtterance();
@@ -23,8 +27,8 @@ const WordCard = ({ card }) => {
   return (
     <div className="card-grid">
       <div className={`card ${flip ? "flip" : ""}`} key={id}>
-        <div className="front" onClick={() => setFlip(!flip)}>
-          <h2>{lesson_id}</h2>
+        <div className="front">
+          <h2 className="card-id">{lesson_id}</h2>
           <h1>{en}</h1>
           <div className="buttonBox">
             <MyButton
@@ -32,9 +36,21 @@ const WordCard = ({ card }) => {
               onClick={() => englishspeak(en)}
             ></MyButton>
           </div>
+          <div>
+            <Tooltip title={"Fordít"}>
+              <RotateLeftIcon
+                fontSize="large"
+                onClick={flipFunction}
+              ></RotateLeftIcon>
+            </Tooltip>
+
+            <Tooltip title={"Már tudom"}>
+              <TaskIcon fontSize="large" onClick={counter}></TaskIcon>
+            </Tooltip>
+          </div>
         </div>
-        <div className="back" onClick={() => setFlip(!flip)}>
-          <h2>{lesson_id}</h2>
+        <div className="back">
+          <h2 className="card-id">{lesson_id}</h2>
           <h1>{hu}</h1>
           <div className="buttonBox">
             <MyButton
@@ -42,6 +58,15 @@ const WordCard = ({ card }) => {
               onClick={() => hungarianspeak(hu)}
             ></MyButton>
           </div>
+          <Tooltip title={"Fordít"}>
+            <RotateRightIcon
+              fontSize="large"
+              onClick={flipFunction}
+            ></RotateRightIcon>
+          </Tooltip>
+          <Tooltip title={"Már tudom"}>
+            <TaskIcon fontSize="large" onClick={counter}></TaskIcon>
+          </Tooltip>
         </div>
       </div>
     </div>
