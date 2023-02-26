@@ -1,0 +1,31 @@
+.homeBox {
+  display: flex;
+  flex-direction: row;
+  margin: 10px auto;
+  width: 800px;
+  background-color: var(--second-color);
+  opacity: 0.95;
+  min-height: 460px;
+}
+
+.homeAccordinBox {
+  width: 320px;
+  padding: 10px;
+  margin: 10px auto;
+}
+
+.homeCardBox {
+  width: 400px;
+  margin: 10px auto;
+}
+
+@media (max-width: 600px) {
+  .homeBox {
+    flex-direction: column;
+    width: 320px;
+    padding: 5px;
+  }
+  .homeAccordinBox {
+    width: 300px;
+  }
+}

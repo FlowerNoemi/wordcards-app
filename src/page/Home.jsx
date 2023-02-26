@@ -1,19 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { getCard } from "../api/getcard";
 import { getLessonName } from "../api/getlesson";
+import { getCategory } from "../api/getcategory";
 import WordCard from "../components/card/Card";
-import List from "@mui/material/List";
-import MyList from "../components/list/MyList";
+import Accordin from "../components/list/Accordin";
 import "./home.css";
 import { MyButton } from "../components/button/Mybutton";
 
 const Home = () => {
+  const [categorya, setCategory] = useState([""]);
   const [allCards, setAllCards] = useState([""]);
   const [cards, setCards] = useState([""]);
+
   const [count, setCount] = useState(1);
   const [checked, setChecked] = useState([1]);
   const [cardId, setCardId] = useState("");
   const [flip, setFlip] = useState(false);
+
+  const getCategoryList = async () => {
+    try {
+      const dataRequest = await getCategory();
+      console.log(dataRequest);
+      setCategory(dataRequest);
+    } catch (e) {
+      console.log("error message : ", e);
+    }
+  };
+
+  useEffect(() => {
+    getCategoryList();
+  }, []);
 
   const getallCard = async (id) => {
     try {
@@ -25,18 +41,15 @@ const Home = () => {
     }
   };
 
-  const getallCardsName = async () => {
+  const getallCardsName = async (id) => {
     try {
-      const dataRequest = await getLessonName();
+      const dataRequest = await getLessonName(id);
       console.log(dataRequest);
       setAllCards(dataRequest);
     } catch (e) {
       console.log("error message : ", e);
     }
   };
-  useEffect(() => {
-    getallCardsName();
-  }, []);
 
   const found = cards.find((element) => {
     const filterCardId = parseInt(element.lesson_id);
@@ -58,10 +71,12 @@ const Home = () => {
       getallCard(id);
       setCardId(id);
       setCount(1);
+      setFlip(false);
     } else {
       newChecked.splice(currentIndex, 1);
       setCardId("");
       setCount(1);
+      setFlip(false);
     }
     setChecked(newChecked);
   };
@@ -75,49 +90,47 @@ const Home = () => {
     setFlip(!flip);
   };
 
-  return (
-    <div>
-      <h1>Szókártya</h1>
+  const categoryChoose = (id) => {
+    getallCardsName(id);
+  };
 
-      {cardId !== "" && (
-        <div>
-          {found && count <= cards.length ? (
-            <div>
-              {cardFilter.map((card, id) => {
-                return (
-                  <WordCard
-                    key={id}
-                    card={card}
-                    counter={() => counter()}
-                    flipFunction={() => flipFunction()}
-                    flip={flip}
-                  />
-                );
-              })}
-            </div>
-          ) : (
-            <div>
-              <h2>Nincs több!</h2>
-              <MyButton onClick={() => setCount(1)} value="Újra"></MyButton>
-            </div>
-          )}
-        </div>
-      )}
-      <List
-        dense
-        sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
-      >
-        {allCards.map((allcard, id) => {
-          return (
-            <MyList
-              key={id}
-              allcard={allcard}
-              onChange={handleToggle(allcard.id)}
-              checked={checked.indexOf(allcard.id) !== -1}
-            />
-          );
-        })}
-      </List>
+  return (
+    <div className="homeBox">
+      <div className="homeAccordinBox">
+        <Accordin
+          categoryChoose={categoryChoose}
+          handleToggle={handleToggle}
+          checked={checked}
+          allCards={allCards}
+          categorya={categorya}
+        />
+      </div>
+      <div className="homeCardBox">
+        {cardId !== "" && (
+          <div>
+            {found && count <= cards.length ? (
+              <div>
+                {cardFilter.map((card, id) => {
+                  return (
+                    <WordCard
+                      key={id}
+                      card={card}
+                      counter={() => counter()}
+                      flipFunction={() => flipFunction()}
+                      flip={flip}
+                    />
+                  );
+                })}
+              </div>
+            ) : (
+              <div>
+                <h2>Nincs több!</h2>
+                <MyButton onClick={() => setCount(1)} value="Újra"></MyButton>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

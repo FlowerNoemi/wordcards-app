@@ -4,6 +4,8 @@ import RotateLeftIcon from "@mui/icons-material/RotateLeft";
 import RotateRightIcon from "@mui/icons-material/RotateRight";
 import Tooltip from "@mui/material/Tooltip";
 import TaskIcon from "@mui/icons-material/Task";
+import { ThemeProvider } from "@mui/material/styles";
+import { theme } from "../theme/Theme";
 
 import "./card.css";
 
@@ -25,51 +27,65 @@ const WordCard = ({ card, flipFunction, counter, flip }) => {
   };
 
   return (
-    <div className="card-grid">
-      <div className={`card ${flip ? "flip" : ""}`} key={id}>
-        <div className="front">
-          <h2 className="card-id">{lesson_id}</h2>
-          <h1>{en}</h1>
-          <div className="buttonBox">
-            <MyButton
-              value="Felolvas"
-              onClick={() => englishspeak(en)}
-            ></MyButton>
+    <ThemeProvider theme={theme}>
+      <div className="card-grid">
+        <div className={`card ${flip ? "flip" : ""}`} key={id}>
+          <div className="front">
+            <div className="back-description">
+              <h2 className="card-id">{lesson_id}</h2>
+              <h1>{en}</h1>
+              <div className="buttonBox">
+                <MyButton
+                  value="Felolvas"
+                  onClick={() => englishspeak(en)}
+                ></MyButton>
+              </div>
+              <div>
+                <div className="card-tool-box1">
+                  <Tooltip title={"Fordít"}>
+                    <RotateLeftIcon
+                      fontSize="large"
+                      onClick={flipFunction}
+                    ></RotateLeftIcon>
+                  </Tooltip>
+                </div>
+                <div className="card-tool-box2">
+                  <Tooltip title={"Már tudom"}>
+                    <TaskIcon fontSize="large" onClick={counter}></TaskIcon>
+                  </Tooltip>
+                </div>
+              </div>
+            </div>
           </div>
-          <div>
-            <Tooltip title={"Fordít"}>
-              <RotateLeftIcon
-                fontSize="large"
-                onClick={flipFunction}
-              ></RotateLeftIcon>
-            </Tooltip>
+          <div className="back">
+            <div className="back-description">
+              <h2 className="card-id">{lesson_id}</h2>
+              <h1>{hu}</h1>
+              <div className="buttonBox">
+                <MyButton
+                  value="Felolvas"
+                  onClick={() => hungarianspeak(hu)}
+                ></MyButton>
+              </div>
 
-            <Tooltip title={"Már tudom"}>
-              <TaskIcon fontSize="large" onClick={counter}></TaskIcon>
-            </Tooltip>
+              <div className="card-tool-box1">
+                <Tooltip title={"Fordít"}>
+                  <RotateRightIcon
+                    fontSize="large"
+                    onClick={flipFunction}
+                  ></RotateRightIcon>
+                </Tooltip>
+              </div>
+              <div className="card-tool-box2">
+                <Tooltip title={"Már tudom"}>
+                  <TaskIcon fontSize="large" onClick={counter}></TaskIcon>
+                </Tooltip>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="back">
-          <h2 className="card-id">{lesson_id}</h2>
-          <h1>{hu}</h1>
-          <div className="buttonBox">
-            <MyButton
-              value="Felolvas"
-              onClick={() => hungarianspeak(hu)}
-            ></MyButton>
-          </div>
-          <Tooltip title={"Fordít"}>
-            <RotateRightIcon
-              fontSize="large"
-              onClick={flipFunction}
-            ></RotateRightIcon>
-          </Tooltip>
-          <Tooltip title={"Már tudom"}>
-            <TaskIcon fontSize="large" onClick={counter}></TaskIcon>
-          </Tooltip>
         </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 };
 export default WordCard;
