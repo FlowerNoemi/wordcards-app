@@ -12,7 +12,7 @@
   cursor: pointer;
   transform: perspective(1000px) rotateY(var(--rotate-y, 0))
     translateY(var(--translate-y, 0));
-  height: 400px;
+  height: 410px;
   width: 350px;
   margin: 15px auto;
 }
@@ -59,7 +59,7 @@
   right: 10px;
 }
 
-.back-description {
+.description {
   height: 300px;
   width: 300px;
   position: relative;
@@ -67,13 +67,22 @@
   text-align: center;
 }
 
-@media (max-width: 600px) {
+.desc {
+  height: 200px;
+}
+
+.cardlogo {
+  height: 42px;
+}
+
+@media (max-width: 800px) {
   .card {
     width: 300px;
+    height: 450px;
     padding-bottom: 20px;
-    margin: 5px 10px;
+    margin: 0px auto;
   }
-  .back-description {
+  .description {
     width: 250px;
     padding: 2px;
   }
@@ -88,5 +97,35 @@
     position: absolute;
     bottom: -60px;
     right: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 20px 0px 20px 0px;
+    padding-bottom: 20px;
+    margin: 0 auto;
+  }
+  .description {
+    width: 250px;
+    padding: 2px;
+  }
+  .card-tool-box1 {
+    display: inline-block;
+    position: absolute;
+    bottom: -60px;
+    left: 10px;
+  }
+  .card-tool-box2 {
+    display: inline-block;
+    position: absolute;
+    bottom: -60px;
+    right: 10px;
+  }
+  .card-grid {
+    margin: 0 auto;
+  }
+  .desc {
+    height: 210px;
   }
 }

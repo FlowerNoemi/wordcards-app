@@ -61,7 +61,12 @@ const Header = () => {
               LOGO
             </Typography>
 
-            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "flex", md: "none" },
+              }}
+            >
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -121,12 +126,18 @@ const Header = () => {
             >
               LOGO
             </Typography>
-            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
+                justifyContent: "flex-end",
+              }}
+            >
               {pages.map((page) => (
                 <Button
                   key={page.page}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
+                  sx={{ my: 2, color: "white", display: "inline-block" }}
                 >
                   <Typography onClick={() => navigate(page.url)}>
                     {page.page}

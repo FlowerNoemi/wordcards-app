@@ -19,13 +19,26 @@
   margin: 10px auto;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .homeBox {
     flex-direction: column;
-    width: 320px;
+    width: 400px;
     padding: 5px;
   }
   .homeAccordinBox {
     width: 300px;
+    margin: 0 auto;
+  }
+  .homeCardBox {
+    width: 300px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .homeBox {
+    flex-direction: column;
+    padding: 5px;
+    width: 340px;
   }
 }

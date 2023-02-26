@@ -4,6 +4,8 @@ import RotateLeftIcon from "@mui/icons-material/RotateLeft";
 import RotateRightIcon from "@mui/icons-material/RotateRight";
 import Tooltip from "@mui/material/Tooltip";
 import TaskIcon from "@mui/icons-material/Task";
+import hu_logo from "../../assets/hu_icon.png";
+import en_logo from "../../assets/en_icon.png";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "../theme/Theme";
 
@@ -31,9 +33,18 @@ const WordCard = ({ card, flipFunction, counter, flip }) => {
       <div className="card-grid">
         <div className={`card ${flip ? "flip" : ""}`} key={id}>
           <div className="front">
-            <div className="back-description">
-              <h2 className="card-id">{lesson_id}</h2>
-              <h1>{en}</h1>
+            <img
+              src={en_logo}
+              loading="lazy"
+              alt="Angol zászló"
+              title="Angol zászló"
+              className="cardlogo"
+            />
+            <div className="description">
+              <div className="desc">
+                <h2 className="card-id">{lesson_id}</h2>
+                <h1>{en}</h1>
+              </div>
               <div className="buttonBox">
                 <MyButton
                   value="Felolvas"
@@ -58,9 +69,18 @@ const WordCard = ({ card, flipFunction, counter, flip }) => {
             </div>
           </div>
           <div className="back">
-            <div className="back-description">
-              <h2 className="card-id">{lesson_id}</h2>
-              <h1>{hu}</h1>
+            <img
+              src={hu_logo}
+              loading="lazy"
+              alt="Angol zászló"
+              title="Angol zászló"
+              className="cardlogo"
+            />
+            <div className="description">
+              <div className="desc">
+                <h2 className="card-id">{lesson_id}</h2>
+                <h1>{hu}</h1>
+              </div>
               <div className="buttonBox">
                 <MyButton
                   value="Felolvas"
