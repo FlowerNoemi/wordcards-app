@@ -89,13 +89,13 @@
   .card-tool-box1 {
     display: inline-block;
     position: absolute;
-    bottom: -60px;
+    bottom: -40px;
     left: 10px;
   }
   .card-tool-box2 {
     display: inline-block;
     position: absolute;
-    bottom: -60px;
+    bottom: -40px;
     right: 10px;
   }
 }
@@ -113,13 +113,13 @@
   .card-tool-box1 {
     display: inline-block;
     position: absolute;
-    bottom: -60px;
+    bottom: -40px;
     left: 10px;
   }
   .card-tool-box2 {
     display: inline-block;
     position: absolute;
-    bottom: -60px;
+    bottom: -40px;
     right: 10px;
   }
   .card-grid {

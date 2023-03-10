@@ -14,14 +14,14 @@ export const theme = createTheme({
       main: "#690501",
     },
     text: {
-      primary: "rgba(0,0,0,0.87)",
+      primary: "#0a0c38",
     },
     background: {
-      default: "#690501",
       paper: "#e1e2e1",
     },
   },
   typography: {
     fontFamily: font,
+    color: "#0a0c38",
   },
 });

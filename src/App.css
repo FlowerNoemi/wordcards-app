@@ -1,12 +1,21 @@
 .app-Box {
-  height: 100vh;
-  opacity: 0.92;
+  min-height: 92vh;
+  width: 100vw;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+  margin-top: 62px;
+  height: fit-content;
 }
 
 @media screen and (max-width: 800px) {
   .app-Box {
-    height: 120vmax;
-    padding-bottom: 50px;
-    margin-bottom: 50px;
+    min-height: 92vh;
+    height: fit-content;
+    margin-top: 56px;
   }
 }

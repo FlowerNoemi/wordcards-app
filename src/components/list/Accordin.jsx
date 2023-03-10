@@ -6,8 +6,6 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import List from "@mui/material/List";
 import MyList from "../../components/list/MyList";
-import { ThemeProvider } from "@mui/material/styles";
-import { theme } from "../theme/Theme";
 
 const Accordin = ({
   categoryChoose,
@@ -28,46 +26,44 @@ const Accordin = ({
       <div>
         {categorya.map((cat, id) => {
           return (
-            <ThemeProvider theme={theme} key={id}>
-              <Accordion
-                key={id}
-                expanded={expanded === `panel_${cat.id}`}
-                onChange={handleChange(`panel_${cat.id}`)}
+            <Accordion
+              key={id}
+              expanded={expanded === `panel_${cat.id}`}
+              onChange={handleChange(`panel_${cat.id}`)}
+            >
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+                onClick={() => categoryChoose(cat.id)}
               >
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1a-content"
-                  id="panel1a-header"
-                  onClick={() => categoryChoose(cat.id)}
-                >
-                  <Typography>{cat.category}</Typography>
-                </AccordionSummary>
+                <Typography>{cat.category}</Typography>
+              </AccordionSummary>
 
-                <AccordionDetails>
-                  <div>
-                    <List
-                      dense
-                      sx={{
-                        width: "100%",
-                        maxWidth: 300,
-                        bgcolor: "background.paper",
-                      }}
-                    >
-                      {allCards.map((allcard, id) => {
-                        return (
-                          <MyList
-                            key={id}
-                            allcard={allcard}
-                            onChange={handleToggle(allcard.id)}
-                            checked={checked.indexOf(allcard.id) !== -1}
-                          />
-                        );
-                      })}
-                    </List>
-                  </div>
-                </AccordionDetails>
-              </Accordion>
-            </ThemeProvider>
+              <AccordionDetails>
+                <div>
+                  <List
+                    dense
+                    sx={{
+                      width: "100%",
+                      maxWidth: 300,
+                      bgcolor: "background.paper",
+                    }}
+                  >
+                    {allCards.map((allcard, id) => {
+                      return (
+                        <MyList
+                          key={id}
+                          allcard={allcard}
+                          onChange={handleToggle(allcard.id)}
+                          checked={checked.indexOf(allcard.id) !== -1}
+                        />
+                      );
+                    })}
+                  </List>
+                </div>
+              </AccordionDetails>
+            </Accordion>
           );
         })}
       </div>

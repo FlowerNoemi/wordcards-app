@@ -39,6 +39,7 @@
   .homeBox {
     flex-direction: column;
     padding: 5px;
+    padding-bottom: 60px;
     width: 340px;
   }
 }
