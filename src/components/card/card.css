@@ -8,7 +8,7 @@
   box-shadow: 0 0 5px 5px #00000080;
   background-color: #f5f5f5f8;
   transform-style: preserve-3d;
-  transition: 150ms;
+  transition: 200ms;
   cursor: pointer;
   transform: perspective(1000px) rotateY(var(--rotate-y, 0))
     translateY(var(--translate-y, 0));
@@ -34,7 +34,9 @@
 .card .back {
   position: absolute;
   padding: 1rem;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  transform: rotateX(0deg);
 }
 
 .card .back {
@@ -44,23 +46,24 @@
 .card-id {
   font-size: 36px;
   text-align: center;
+  margin: 0;
 }
 
 .card-tool-box1 {
   display: inline-block;
   position: absolute;
-  bottom: -5px;
+  bottom: 10px;
   left: 10px;
 }
 .card-tool-box2 {
   display: inline-block;
   position: absolute;
-  bottom: -5px;
+  bottom: 10px;
   right: 10px;
 }
 
 .description {
-  height: 300px;
+  height: 350px;
   width: 300px;
   position: relative;
   padding: 5px;
@@ -68,7 +71,8 @@
 }
 
 .desc {
-  height: 200px;
+  height: 250px;
+  font-size: 16px;
 }
 
 .cardlogo {
@@ -89,13 +93,13 @@
   .card-tool-box1 {
     display: inline-block;
     position: absolute;
-    bottom: -40px;
+    bottom: -20px;
     left: 10px;
   }
   .card-tool-box2 {
     display: inline-block;
     position: absolute;
-    bottom: -40px;
+    bottom: -20px;
     right: 10px;
   }
 }
@@ -110,18 +114,7 @@
     width: 250px;
     padding: 2px;
   }
-  .card-tool-box1 {
-    display: inline-block;
-    position: absolute;
-    bottom: -40px;
-    left: 10px;
-  }
-  .card-tool-box2 {
-    display: inline-block;
-    position: absolute;
-    bottom: -40px;
-    right: 10px;
-  }
+
   .card-grid {
     margin: 0 auto;
   }

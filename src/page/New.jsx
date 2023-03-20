@@ -1,7 +1,13 @@
 import * as React from "react";
+import Newword from "../components/Newword";
+import "./new.css";
 
 const New = () => {
-  return <div>Teszt oldal</div>;
+  return (
+    <div className="new-box">
+      <Newword />
+    </div>
+  );
 };
 
 export default New;

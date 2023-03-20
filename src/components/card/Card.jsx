@@ -13,17 +13,25 @@ const WordCard = ({ card, flipFunction, counter, flip }) => {
   const { id, en, hu, lesson_id } = card;
 
   const englishspeak = (en) => {
-    let msg = new SpeechSynthesisUtterance();
-    msg.text = en;
-    msg.lang = "en-US";
-    speechSynthesis.speak(msg);
+    if ("speechSynthesis" in window) {
+      let msg = new SpeechSynthesisUtterance();
+      msg.text = en;
+      msg.lang = "en-US";
+      window.speechSynthesis.speak(msg);
+    } else {
+      alert("A böngésző nem támogatja a funkciót");
+    }
   };
 
   const hungarianspeak = (hu) => {
-    let msg = new SpeechSynthesisUtterance();
-    msg.text = hu;
-    msg.lang = "hu";
-    speechSynthesis.speak(msg);
+    if ("speechSynthesis" in window) {
+      let msg = new SpeechSynthesisUtterance();
+      msg.text = hu;
+      msg.lang = "hu";
+      window.speechSynthesis.speak(msg);
+    } else {
+      alert("A böngésző nem támogatja a funkciót");
+    }
   };
 
   return (
