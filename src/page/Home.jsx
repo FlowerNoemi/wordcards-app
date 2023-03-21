@@ -105,6 +105,7 @@ const Home = () => {
           categorya={categorya}
         />
       </div>
+
       <div className="homeCardBox">
         {cardId !== "" && (
           <div>

@@ -1,0 +1,17 @@
+.newword-box {
+  border: 1px solid #0a0c38;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.top-box-input-field {
+  margin: 2px;
+}
+.newword-input-box {
+  border: 1px solid #0a0c38;
+  padding: 2px 2px;
+}
+
+.newwordbox-button {
+  margin-bottom: 60px;
+}

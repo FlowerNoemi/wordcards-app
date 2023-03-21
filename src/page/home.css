@@ -1,7 +1,7 @@
 .homeBox {
   display: flex;
 
-  margin: 10px auto;
+  margin: 20px auto;
   width: 800px;
   background-color: var(--second-color);
   opacity: 0.95;
@@ -9,9 +9,11 @@
 }
 
 .homeAccordinBox {
-  width: 320px;
+  width: 300px;
   padding: 10px;
-  margin: 10px auto;
+  margin: 20px auto;
+  height: 400px;
+  overflow-y: scroll;
 }
 
 .homeCardBox {
@@ -21,9 +23,9 @@
 
 @media (max-width: 800px) {
   .homeBox {
-    flex-direction: column;
+    flex-direction: column-reverse;
     width: 400px;
-    padding: 5px;
+    padding-bottom: 50px;
   }
   .homeAccordinBox {
     width: 300px;
@@ -31,6 +33,7 @@
   }
   .homeCardBox {
     width: 300px;
+
     margin: 0 auto;
   }
 }
@@ -39,7 +42,26 @@
   .homeBox {
     flex-direction: column;
     padding: 5px;
-    padding-bottom: 60px;
+    padding-bottom: 50px;
     width: 340px;
   }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

@@ -1,6 +1,20 @@
 .new-box {
-  background-color: azure;
-  min-width: 400px;
-  max-width: fit-content;
-  margin: 0 auto;
+  background-color: rgba(191, 195, 195, 0.95);
+  width: 800px;
+  margin: 10px auto;
+  padding: 10px;
+}
+
+@media (max-width: 800px) {
+  .new-box {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 600px) {
+  .new-box {
+    padding: 5px;
+    margin: 5px auto;
+    max-width: 340px;
+  }
 }
